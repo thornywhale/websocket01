@@ -1,8 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getAllMessages } from '../api';
 
+const CHAT_SLICE_NAME = 'chat';
+
 export const getChat = createAsyncThunk(
-  'chat/getChat',
+  `${CHAT_SLICE_NAME}/getChat`,
   async (params, thunkAPI) => {
     try {
       const {
@@ -16,7 +18,7 @@ export const getChat = createAsyncThunk(
 );
 
 const chatSlice = createSlice({
-  name: 'chat',
+  name: CHAT_SLICE_NAME,
   initialState: {
     messages: [],
     error: null,

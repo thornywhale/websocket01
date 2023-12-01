@@ -3,4 +3,5 @@ module.exports = {
     NEW_MESSAGE: 'NEW_MESSAGE',
     ERROR_MESSAGE: 'ERROR_MESSAGE',
   },
+  CLIENT_PORT: 5000,
 };

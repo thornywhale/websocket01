@@ -1,18 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
-import ListMessages from '../components/forms/ListMessages';
+import ListMessages from '../components/ListMessages';
 import MessageForm from '../components/forms/MessageForm';
 import UserForm from '../components/forms/UserForm';
 
 const HomePage = () => {
+  const { user } = useSelector((store) => store.user);
   return (
-    <div style={{ display: 'flex' }}>
+    <div style={{ display: 'flex', justifyContent: 'space-between' }}>
       <div>
         <ListMessages />
-        <MessageForm />
+        {user && <MessageForm />}
       </div>
       <div>
-        <UserForm />
+        {!user && <UserForm />}
+        {user && <span>hi, {user.login}!</span>}
+        {user && <button style={{ marginLeft: '12px' }}>log out</button>}
       </div>
     </div>
   );

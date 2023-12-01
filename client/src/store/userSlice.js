@@ -1,19 +1,24 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { createUser } from '../api';
 
-const authUser = createAsyncThunk('user/authUser', async (params, thunkAPI) => {
-  try {
-    const {
-      data: { data },
-    } = await createUser(params);
-    return data;
-  } catch (error) {
-    return thunkAPI.rejectWithValue(error);
+const USER_SLICE_NAME = 'user';
+
+export const authUser = createAsyncThunk(
+  `${USER_SLICE_NAME}/authUser`,
+  async (params, thunkAPI) => {
+    try {
+      const {
+        data: { data },
+      } = await createUser(params);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
   }
-});
+);
 
 const userSlice = createSlice({
-  name: 'user',
+  name: USER_SLICE_NAME,
   initialState: {
     user: null,
     error: null,

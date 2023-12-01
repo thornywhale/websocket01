@@ -18,7 +18,7 @@ fs.readdirSync(__dirname)
   .filter((fileName) => /\.js$/.test(fileName) && fileName !== currentFileName)
   .forEach((fileName) => {
     const Model = require(path.resolve(__dirname, fileName));
-    db[Model.name] = Model;
+    db[Model.modelName] = Model;
   });
 
 module.exports = db;
